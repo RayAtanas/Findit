@@ -1,82 +1,63 @@
 package Model;
 
-import java.lang.annotation.Documented;
-import java.time.LocalDate;
-
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
+
 @Document(collection = "users")
-public class User extends BaseEntity{
+public class User extends BaseEntity {
 
-    String Name;
-    String Email;
-    String Password;
-    String Phone_Number;
-    LocalDate Date_Of_Birth;
+   public String FirstName;
+   public String LastName; // Added LastName field
+   public String Email;
+   public String Password;
+   public String Phone_Number;
 
 
-    public User(){}
+    public User() {
+        // Default constructor
+    }
 
-    public User(String name, String email, String password, String phone_Number, LocalDate date_Of_Birth) {
-        Name = name;
+    public User(String firstName, String lastName, String email, String password, String phone_Number) {
+        super();
+        FirstName = firstName;
+        LastName = lastName;
         Email = email;
         Password = password;
         Phone_Number = phone_Number;
-        Date_Of_Birth = date_Of_Birth;
+
     }
 
-    public User(String id, String ray, String mail, String ray123, String number, LocalDate of) {
-        super();
+    public String getFirstName() {
+        return FirstName;
     }
 
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
+    public String getLastName() {
+        return LastName;
     }
 
     public String getEmail() {
         return Email;
     }
 
-    public void setEmail(String email) {
-        Email = email;
-    }
-
     public String getPassword() {
         return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
     }
 
     public String getPhone_Number() {
         return Phone_Number;
     }
 
-    public void setPhone_Number(String phone_Number) {
-        Phone_Number = phone_Number;
-    }
-
-    public LocalDate getDate_Of_Birth() {
-        return Date_Of_Birth;
-    }
-
-    public void setDate_Of_Birth(LocalDate date_Of_Birth) {
-        Date_Of_Birth = date_Of_Birth;
-    }
 
     @Override
     public String toString() {
         return "User{" +
-                "Name='" + Name + '\'' +
+                "id='" + id + '\'' +
+                ", FirstName='" + FirstName + '\'' +
+                ", LastName='" + LastName + '\'' +
                 ", Email='" + Email + '\'' +
                 ", Password='" + Password + '\'' +
                 ", Phone_Number='" + Phone_Number + '\'' +
-                ", Date_Of_Birth=" + Date_Of_Birth +
                 '}';
     }
 }
