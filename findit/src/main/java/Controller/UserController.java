@@ -1,12 +1,11 @@
 package Controller;
+import Model.DTO.UserDTO;
 import Model.User;
+import Repository.IUserRepository;
 import Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -18,11 +17,18 @@ public class UserController {
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
+
     }
 
-    @GetMapping
+    @GetMapping(path = "/getusers")
     public List<User> GetUsers() {
         return userService.GetUsers();
 
+    }
+
+    @PostMapping(path = "/createuser")
+    public User CreateUser(@RequestBody UserDTO userDTO){
+
+        return userService.CreateUser(userDTO);
     }
 }
