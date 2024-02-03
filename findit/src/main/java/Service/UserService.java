@@ -25,21 +25,17 @@ public class UserService {
     public List<User> GetUsers() {
 
 
-        return List.of(
-                new User(
-                        "Ray",
-                        "Atanas",
-                        "rayatanas@hotmail.com",
-                        "ray123",
-                        "123456"
-
-                )
-        );
+        return userRepository.findAll();
     }
 
 
     public User CreateUser(UserDTO userDTO) {
 
+        Optional<User> existingUser = userRepository.findByEmail(userDTO.getEmail());
+        if (existingUser.isPresent()) {
+
+            throw new RuntimeException("User with email " + userDTO.getEmail() + " already exists.");
+        } else {
 
             User newUser = new User(
                     userDTO.getFirstName(),
@@ -48,11 +44,10 @@ public class UserService {
                     userDTO.getPassword(),
                     userDTO.getPhoneNumber()
             );
-
             userRepository.save(newUser);
             return newUser;
-
         }
 
+    }
 
 }
