@@ -2,62 +2,77 @@ package Model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
-
 @Document(collection = "users")
 public class User extends BaseEntity {
 
-   public String FirstName;
-   public String LastName; // Added LastName field
-   public String Email;
-   public String Password;
-   public String Phone_Number;
-
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    private String phoneNumber;
 
     public User() {
         // Default constructor
     }
 
-    public User(String firstName, String lastName, String email, String password, String phone_Number) {
+    public User(String firstName, String lastName, String email, String password, String phoneNumber) {
         super();
-        FirstName = firstName;
-        LastName = lastName;
-        Email = email;
-        Password = password;
-        Phone_Number = phone_Number;
-
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
-    public String getPhone_Number() {
-        return Phone_Number;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     @Override
     public String toString() {
         return "User{" +
                 "id='" + id + '\'' +
-                ", FirstName='" + FirstName + '\'' +
-                ", LastName='" + LastName + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Password='" + Password + '\'' +
-                ", Phone_Number='" + Phone_Number + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 }
